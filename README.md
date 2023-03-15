@@ -20,6 +20,8 @@ $ make -s deps;
 $ make -s all;
 ```
 
+visit <http://127.0.0.1:9124>
+
 ## walang
 
 todo.
