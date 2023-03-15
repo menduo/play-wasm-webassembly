@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>WASM Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="static/jquery-3.6.3.min.js"></script>
+    <script type="module">
+        import init from "./pkg/wasm_demo.js"
+
+        init();
+    </script>
+
+</head>
+
+<body>
+<div>
+    <p>Simple Sum for somebody</p>
+
+    <label>Name: <input name="name" type="text" placeholder="xi?"></label><br/>
+    <label>Number A: <input name="va" type="number"></label><br/>
+    <label>Number B: <input name="vb" type="number"></label><br/>
+
+    <button id="btn-plus">Plus</button>
+
+    <p>
+        Result: <br/>
+        <span id="v-of-name"></span>: <span id="result-of-sum-by-xxx"></span>
+    </p>
+</div>
+
+</body>
+
+<script type="module">
+    import {add_by_rust} from "./pkg/wasm_demo.js"
+    let name = $("[name='name']").val() || "nobody";
+    $("#v-of-name").html(name)
+
+    $("#btn-plus").on("click", function () {
+        let name = $("[name='name']").val() || "nobody";
+        let va = $("[name='va']").val() || "0";
+        let vb = $("[name='vb']").val() || "0";
+
+        va = parseInt(va)
+        vb = parseInt(vb)
+
+        console.log("name", name);
+        console.log("va", va);
+        console.log("vb", vb);
+
+        let res = add_by_rust(va, vb);
+        $("#v-of-name").html(name)
+        $("#result-of-sum-by-xxx").html(res)
+    })
+
+</script>
+
+</html>

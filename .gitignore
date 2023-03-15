@@ -1,0 +1,12 @@
+dist/
+vendor/
+node_modules/
+_pid*
+.env
+.DS_Store
+xjp
+target/
+pkg2/
+.idea
+by-golang/wasm-demo-a/wasms/
+by-golang/wasm-demo-a/static/wasm_exec.js
